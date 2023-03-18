@@ -1,6 +1,6 @@
 import { getSingleBlog } from "./singleBlogsApi";
 import blogsSlice from "../blogs/blogsSlice";
-import axios from "axios";
+import axios from "../../utils/axios";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -26,10 +26,7 @@ export const updateSaveBlogPatch = createAsyncThunk(
 	"blog/updateSave",
 	async ({ id, blog }) => {
 		try {
-			const response = await axios.patch(
-				`http://localhost:9000/blogs/${id}`,
-				blog
-			);
+			const response = await axios.patch(`/blogs/${id}`, blog);
 
 			return response.data;
 		} catch (error) {
@@ -41,10 +38,7 @@ export const incrementLikesPatch = createAsyncThunk(
 	"blog/incrementLikes",
 	async ({ id, blog }) => {
 		try {
-			const response = await axios.patch(
-				`http://localhost:9000/blogs/${id}`,
-				blog
-			);
+			const response = await axios.patch(`/blogs/${id}`, blog);
 
 			return response.data;
 		} catch (error) {
